@@ -4,7 +4,7 @@ var parent = document.getElementById("parent");
 var EidtedInput = document.getElementById("editeinp");
 var informa = null;
 var UpdateTextTodo = null;
-var toggle = true;
+var toggle = false;
 function AddTodo() {
   var todo = inp.value;
   if (todo === "") {
@@ -103,21 +103,24 @@ function UpdateNow(event) {
 }
 
 function completedTodo(event) {
-  // event.parentNode.parentNode.style.TextDecoration = "line-through";
-  // console.log(firstEle);
-  // var parentEle = firstEle.parentNode;
   event.parentNode.previousElementSibling.classList.toggle("completed");
 
-  if (toggle === true) {
+  //  if(event.parentNode.previousElementSibling.firstElementChild.firstElementChild)
+  console.log(
+    event.parentNode.previousElementSibling.firstElementChild.firstElementChild
+  );
+  if (
+    !event.parentNode.previousElementSibling.firstElementChild.firstElementChild.getAttribute(
+      "checked"
+    )
+  ) {
     event.parentNode.previousElementSibling.firstElementChild.firstElementChild.setAttribute(
       "checked",
-      "true"
+      "checked"
     );
-    toggle = false;
   } else {
     event.parentNode.previousElementSibling.firstElementChild.firstElementChild.removeAttribute(
       "checked"
     );
-    toggle = true;
   }
 }
